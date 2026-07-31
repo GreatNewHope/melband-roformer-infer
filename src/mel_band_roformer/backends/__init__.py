@@ -6,13 +6,13 @@ discovered by noticing the wrong hardware was busy. Backend modules are imported
 lazily so `import mel_band_roformer` never drags an optional framework into the
 default import path.
 
-Reads: .base (SeparationBackend, BackendUnavailable), .torch_backend (lazily),
-.mlx_backend (lazily)
+Reads: .base (SeparationBackend, BackendUnavailable, ChunkingPlan), .torch_backend
+(lazily), .mlx_backend (lazily)
 """
 
 from __future__ import annotations
 
-from .base import BackendUnavailable, SeparationBackend
+from .base import BackendUnavailable, ChunkingPlan, SeparationBackend
 
 #: Every selectable backend name, in the order `auto` prefers them.
 BACKEND_NAMES = ("mlx", "torch")
@@ -90,6 +90,7 @@ __all__ = [
     "BACKEND_NAMES",
     "DEFAULT_BACKEND",
     "BackendUnavailable",
+    "ChunkingPlan",
     "SeparationBackend",
     "get_backend",
     "resolve_backend_name",

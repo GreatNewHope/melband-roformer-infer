@@ -10,12 +10,12 @@ splits long mixtures into overlapping chunks, applies a linear fade-in/out windo
 chunk to avoid audible seams at chunk boundaries, and normalizes the result by the
 accumulated window weight -- this is what lets inference run on audio far longer than
 a single forward pass could hold in memory. Its chunk/step/fade/border numbers come
-from backends.base.ChunkingPlan rather than being computed here a second time, so the
+from backends.ChunkingPlan rather than being computed here a second time, so the
 Torch and MLX backends cannot derive them independently and drift silently -- see
 backends/base.py's docstring. load_checkpoint_state centralizes checkpoint loading
 (both backends and the CLI use it) so a future compatibility tweak has one home.
 
-Reads: .mel_band_roformer.MelBandRoformer, .backends.base (ChunkingPlan), torch
+Reads: .mel_band_roformer.MelBandRoformer, .backends (ChunkingPlan), torch
 """
 
 import time
@@ -76,7 +76,7 @@ def get_windowing_array(window_size, fade_size, device):
 def demix_track(config, model, mix, device, first_chunk_time=None):
     # ChunkingPlan owns these numbers so a second backend cannot derive them
     # independently and drift silently -- see backends/base.py.
-    from .backends.base import ChunkingPlan
+    from .backends import ChunkingPlan
 
     plan = ChunkingPlan.from_config(config)
     C = plan.chunk_size
