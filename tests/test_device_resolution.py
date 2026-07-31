@@ -43,9 +43,11 @@ class TestResolveDevice:
 
         assert inference_module._resolve_device("cpu") == torch.device("cpu")
 
-    def test_explicit_cuda0_passes_through_unchanged(self):
+    def test_explicit_cuda0_passes_through_unchanged(self, monkeypatch):
         import torch
 
+        monkeypatch.setattr(torch.cuda, "is_available", lambda: True)
+        monkeypatch.setattr(torch.cuda, "device_count", lambda: 1)
         assert inference_module._resolve_device("cuda:0") == torch.device("cuda:0")
 
     def test_explicit_cuda_index_is_preserved(self, monkeypatch):
@@ -91,9 +93,11 @@ class TestSelectDeviceFromArgs:
         args = argparse.Namespace(device="cpu")
         assert inference_module._select_device(args) == torch.device("cpu")
 
-    def test_explicit_cuda_string_still_passes_through(self):
+    def test_explicit_cuda_string_still_passes_through(self, monkeypatch):
         import torch
 
+        monkeypatch.setattr(torch.cuda, "is_available", lambda: True)
+        monkeypatch.setattr(torch.cuda, "device_count", lambda: 1)
         args = argparse.Namespace(device="cuda:0")
         assert inference_module._select_device(args) == torch.device("cuda:0")
 
