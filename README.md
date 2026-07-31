@@ -163,9 +163,10 @@ multiple of its STFT hop -- an alignment the chunked path silently assumes.
 
 MPS and MLX both need an **arm64 Python interpreter**. Under Rosetta/x86_64
 they report as unavailable rather than failing loudly -- an x86_64 interpreter
-makes `torch.backends.mps.is_available()` return `False`, and MLX fails to
-run correctly, so an accelerated path just looks absent rather than
-misconfigured. This is easy to hit without noticing: an x86_64 `uv` resolves
+makes `torch.backends.mps.is_available()` return `False`, and MLX ships no
+macOS x86_64 wheel at all, so it cannot even be installed there. Either way,
+an accelerated path just looks absent rather than misconfigured. This is easy
+to hit without noticing: an x86_64 `uv` resolves
 x86_64 interpreters, so `uv sync` can silently produce an environment where
 the accelerated paths structurally cannot exist. Check with
 `python -c "import platform; print(platform.machine())"` -- it must print

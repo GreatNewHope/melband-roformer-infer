@@ -66,6 +66,29 @@ Twin change with bs-roformer-infer's identical MLX backend addition.
   reference *and* (once a backend existed) the backend's `.release()` did the
   same on the same underlying object. Now `release()` defers entirely to the
   backend when one exists.
+- Fixed a latent architecture-divergence bug: the MLX backend's
+  `mask_estimator_depth` fallback (`2`, inherited from vendored upstream)
+  disagreed with the Torch constructor's owning default (`1`), so a config
+  omitting the key silently built a different architecture per backend from
+  the same checkpoint. The auditing weight loader failed loudly on the
+  mismatch, but loudly-wrong is still wrong. Masked in practice because every
+  registry config sets the key explicitly. Guarded by a test asserting the MLX
+  fallback equals the Torch constructor's own signature default, so the two
+  cannot drift apart again.
+- `checkpoints.py` now carries a real header (the dual-registry relationship --
+  a strict 21-model TOML layered on the legacy 99-entry JSON, failure modes,
+  a verified `Reads:` line) instead of a one-line docstring an audit had to
+  read the whole body to substitute for. `ChunkingPlan` is now exported through
+  the `backends` barrel instead of forcing `utils.py` to reach past it into
+  `.backends.base`.
+- Fixed the two long-standing `test_device_resolution.py` failures: both
+  asserted that an explicitly requested `"cuda:0"` survives device resolution
+  unchanged, but neither declared CUDA as available, so they passed only on a
+  CUDA host and failed everywhere else, including the Apple Silicon hosts this
+  branch exists to support. No implementation change -- the tests now
+  monkeypatch availability/device count the way the sibling
+  `cuda:0`-index test already did. Suite now 83 passed, 1 skipped, 200
+  deselected, 0 failed.
 
 ## [0.1.5] - 2026-07-12
 

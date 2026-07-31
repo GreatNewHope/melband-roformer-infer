@@ -12,7 +12,7 @@ GUI dependency. Given an input folder of WAV files, it produces
 stems for non-vocal models). See README.md for the public API, CLI, and
 full model registry.
 
-**In scope**: inference (forward pass) only; an 89-model registry
+**In scope**: inference (forward pass) only; a 99-model registry
 (`src/mel_band_roformer/data/melband_models.json`, bulk-imported from
 python-audio-separator's `models.json` "roformer" list) spanning vocals,
 instrumental, karaoke, denoise, dereverb, crowd, general, and aspiration
@@ -88,6 +88,22 @@ Bundle").
   the Torch entry into it. Loads configs through `SafeLoaderWithTuple` so
   community configs' `!!python/tuple` YAML tags never reach a real object
   constructor.
+- `src/mel_band_roformer/checkpoints.py` -- package-owned checkpoint metadata
+  and validation for the strict TOML registry (`config/checkpoints.toml`, 21
+  models, schema.version=1), layered on top of the legacy 99-entry
+  `data/melband_models.json` that `model_registry.py` still primarily backs.
+  `load_checkpoints` raises `ValueError` for a malformed schema/artifact;
+  `checkpoint_metadata` raises `KeyError` for a model absent from this TOML
+  registry -- a distinct failure mode from a malformed file. `download.py`,
+  `inference.py`, and `clean_api.py` look here first for stricter metadata and
+  fall back to JSON-only handling otherwise.
+- `src/mel_band_roformer/clean_api.py` -- `MelBandRoformerSession` /
+  `MelBandRoformerSeparator`, the additive lifecycle facade: load once, infer
+  many times, then release GPU memory explicitly. Session inference returns
+  the exact files `run_folder()` wrote instead of reconstructing output paths
+  from convention. `backend=` (alongside `device=`) selects the compute
+  framework and is resolved before any checkpoint is downloaded or verified,
+  so an unavailable backend fails fast.
 - `src/mel_band_roformer/utils.py` -- `demix_track` (chunked windowed
   overlap-add inference, its chunk/step/fade/border numbers sourced from
   `backends.base.ChunkingPlan` rather than computed a second time),
@@ -169,6 +185,15 @@ Development below). Test files:
 - `tests/test_twin_backports.py` -- regressions ported from bs-roformer-infer
   (this project's fork sibling) that had drifted out of sync; see
   CHANGELOG.md's `[0.1.3]` entry.
+- `tests/test_session_contract.py` -- offline lifecycle and checkpoint-resolver
+  contracts for `MelBandRoformerSession`: reuse-then-reload-and-close, a failed
+  load staying visible through the context manager, `cache_info()`'s
+  read-only-vs-custom-URL reporting, and TOML metadata driving the default
+  download path.
+- `tests/test_output_manifest.py` -- pins the contract that `run_folder()` and
+  the session API return the exact files they wrote, rather than forcing
+  callers to infer outputs from model defaults or filename conventions.
+  Offline, via monkeypatched `demix_track()` and tiny temp WAVs.
 - `tests/test_backends.py` -- backend resolution, refusal semantics (unsupported
   variation -- vacuous today since this registry declares none, but exists so a
   future variant checkpoint fails loudly instead of mis-running -- and unaligned
@@ -191,13 +216,10 @@ Confirm `python -c "import platform; print(platform.machine())"` says
 
 CI (`.github/workflows/test.yml`) matrixes Python 3.10-3.13, all
 `not network and not realweights`-marked. Locally verified 2026-07-31 via
-`uv run pytest -q` on a host with the `[mlx]` extra installed: 80 passed, 1
+`uv run pytest -q` on a host with the `[mlx]` extra installed: 83 passed, 1
 skipped (`test_backends.py`'s mlx-not-installed refusal check self-skips
-because mlx really is present -- 81 passed / 0 skipped on a host without it),
-200 deselected, plus two long-standing `test_device_resolution.py` failures
-that assert `cuda:0`/`"cuda:0"` resolve without raising on a machine with no
-CUDA at all. Reproduced identically against a `git stash` of this change, so
-pre-existing and not caused by it.
+because mlx really is present -- 84 passed / 0 skipped on a host without it),
+200 deselected, 0 failed.
 
 ## File-top header convention
 
