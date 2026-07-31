@@ -964,7 +964,7 @@ class MelBandRoformerMLX(nn.Module):
         attn_dropout=0.0,
         ff_dropout=0.0,
         mlp_expansion_factor=4,
-        mask_estimator_depth=2,
+        mask_estimator_depth=1,  # matches this package's Torch default, not upstream's 2
         sample_rate=44100,
         stft_n_fft=2048,
         stft_hop_length=512,

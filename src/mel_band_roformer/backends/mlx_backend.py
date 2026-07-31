@@ -133,7 +133,12 @@ class MLXBackend:
             "attn_dropout": 0.0,
             "ff_dropout": 0.0,
             "mlp_expansion_factor": model_cfg.get("mlp_expansion_factor", 4),
-            "mask_estimator_depth": model_cfg.get("mask_estimator_depth", 2),
+            # Fallback 1, matching the Torch constructor (mel_band_roformer.py) --
+            # the owner of this default. It was 2 (inherited from the vendored MLX
+            # constructor), so a config omitting the key built architecturally
+            # different models per backend; the auditing loader failed loudly, but
+            # loudly-wrong is still wrong.
+            "mask_estimator_depth": model_cfg.get("mask_estimator_depth", 1),
             "sample_rate": model_cfg.get("sample_rate", 44100),
             # Forwarded explicitly: upstream's own loader drops stft_normalized,
             # which is inert only while every config happens to leave it false.

@@ -166,3 +166,32 @@ def test_importing_the_package_does_not_pull_in_an_optional_framework():
         f"import mel_band_roformer pulled in an optional framework "
         f"(stdout={result.stdout!r} stderr={result.stderr!r})"
     )
+
+
+def test_backends_agree_on_defaults_when_config_omits_a_key():
+    """A config omitting mask_estimator_depth must build the SAME architecture
+    on both backends.
+
+    The Torch constructor (the owner of this default) uses 1; the MLX backend's
+    fallback was 2, inherited from the vendored upstream constructor -- so the
+    same checkpoint+config pair silently described two different models. The
+    auditing weight loader failed loudly on the mismatch, but loudly-wrong is
+    still wrong; the default has one owner and both backends must follow it.
+    """
+    import inspect
+
+    from ml_collections import ConfigDict
+
+    from mel_band_roformer.backends.mlx_backend import MLXBackend
+    from mel_band_roformer.mel_band_roformer import MelBandRoformer
+
+    torch_default = inspect.signature(MelBandRoformer.__init__).parameters[
+        "mask_estimator_depth"
+    ].default
+    config = ConfigDict({"model": {"dim": 32, "depth": 1}})
+    mlx_args = MLXBackend._model_args(config)
+
+    assert mlx_args["mask_estimator_depth"] == torch_default, (
+        f"MLX fallback {mlx_args['mask_estimator_depth']} != Torch owner default "
+        f"{torch_default}: the same config would build different architectures"
+    )
