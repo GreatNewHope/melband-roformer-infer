@@ -124,6 +124,8 @@ melband-roformer-infer --input_folder songs --backend auto
 accelerated backend only when one is genuinely installed and falls back to Torch
 otherwise. Requesting a backend that cannot run here raises immediately -- before
 any checkpoint is downloaded -- rather than quietly using a different one.
+`backend="mlx"` owns its own Apple Silicon execution and accepts only `device`
+of `auto`/`mps` (or none), refusing anything else rather than ignoring it.
 
 ### The MLX backend
 
@@ -158,6 +160,16 @@ architecture.
 
 It refuses, rather than gets wrong, a config whose `chunk_size` is not a
 multiple of its STFT hop -- an alignment the chunked path silently assumes.
+
+MPS and MLX both need an **arm64 Python interpreter**. Under Rosetta/x86_64
+they report as unavailable rather than failing loudly -- an x86_64 interpreter
+makes `torch.backends.mps.is_available()` return `False`, and MLX fails to
+run correctly, so an accelerated path just looks absent rather than
+misconfigured. This is easy to hit without noticing: an x86_64 `uv` resolves
+x86_64 interpreters, so `uv sync` can silently produce an environment where
+the accelerated paths structurally cannot exist. Check with
+`python -c "import platform; print(platform.machine())"` -- it must print
+`arm64`.
 
 ## Quick Start
 
