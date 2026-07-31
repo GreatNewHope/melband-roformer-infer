@@ -183,6 +183,12 @@ Development below). Test files:
   `pytest -m realweights tests/test_mlx_parity.py -v` (~2.5 min for all three
   cases).
 
+**arm64 note**: `test_mlx_parity.py` skips silently under an x86_64
+interpreter (including Rosetta on Apple Silicon) -- a green realweights run
+on the wrong arch exercises no MLX code and proves nothing about that path.
+Confirm `python -c "import platform; print(platform.machine())"` says
+`arm64` before trusting it.
+
 CI (`.github/workflows/test.yml`) matrixes Python 3.10-3.13, all
 `not network and not realweights`-marked. Locally verified 2026-07-31 via
 `uv run pytest -q` on a host with the `[mlx]` extra installed: 80 passed, 1
