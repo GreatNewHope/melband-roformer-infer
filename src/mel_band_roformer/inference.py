@@ -83,6 +83,27 @@ class OutputManifestEntry(TypedDict):
 
 OutputManifest = list[OutputManifestEntry]
 
+# Single source of truth mapping an `output_format` value to the file suffix and
+# soundfile `subtype` that produce it. FLAC has no float subtype (PCM-only container),
+# which is why "flac16" maps to PCM_16 rather than a float subtype -- an expected
+# limitation of the format, not a gap in this mapping.
+_OUTPUT_FORMAT_SPECS: dict[str, tuple[str, str]] = {
+    "wav_float32": (".wav", "FLOAT"),
+    "wav_s16": (".wav", "PCM_16"),
+    "flac16": (".flac", "PCM_16"),
+}
+
+
+def _resolve_output_format(output_format: str) -> tuple[str, str]:
+    """Return (file_suffix, soundfile_subtype) for a declared `output_format` value."""
+    try:
+        return _OUTPUT_FORMAT_SPECS[output_format]
+    except KeyError:
+        raise ValueError(
+            f"unsupported output_format: {output_format!r} "
+            f"(expected one of {sorted(_OUTPUT_FORMAT_SPECS)})"
+        ) from None
+
 
 def _resolve_output_ids(config: ConfigDict) -> list[str]:
     instruments = [str(instr) for instr in config.training.instruments]
@@ -109,9 +130,12 @@ def _record_written_output(
     )
 
 
-def run_folder(model, args, config, device, verbose: bool = False) -> OutputManifest:
+def run_folder(
+    model, args, config, device, verbose: bool = False, output_format: str = "wav_float32"
+) -> OutputManifest:
     start_time = time.time()
     model.eval()
+    suffix, subtype = _resolve_output_format(output_format)
 
     input_folder = Path(args.input_folder).expanduser()
     store_dir = _resolve_output_dir(Path(args.store_dir).expanduser())
@@ -152,8 +176,8 @@ def run_folder(model, args, config, device, verbose: bool = False) -> OutputMani
             if original_mono:
                 vocals_output = vocals_output[:, 0]
 
-            vocals_path = store_dir / f"{path.stem}_{instr}.wav"
-            sf.write(vocals_path, vocals_output, sr, subtype="FLOAT")
+            vocals_path = store_dir / f"{path.stem}_{instr}{suffix}"
+            sf.write(vocals_path, vocals_output, sr, subtype=subtype)
             _record_written_output(
                 manifest,
                 input_path=path,
@@ -169,8 +193,8 @@ def run_folder(model, args, config, device, verbose: bool = False) -> OutputMani
             original_mix, _ = sf.read(path)
             instrumental = original_mix - vocals_output
 
-            instrumental_path = store_dir / f"{path.stem}_instrumental.wav"
-            sf.write(instrumental_path, instrumental, sr, subtype="FLOAT")
+            instrumental_path = store_dir / f"{path.stem}_instrumental{suffix}"
+            sf.write(instrumental_path, instrumental, sr, subtype=subtype)
             _record_written_output(
                 manifest,
                 input_path=path,

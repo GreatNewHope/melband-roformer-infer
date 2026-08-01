@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 import soundfile as sf
 from ml_collections import ConfigDict
 
@@ -117,6 +118,77 @@ class TestRunFolderManifest:
         ]
         assert all(Path(entry["output_path"]).exists() for entry in manifest)
 
+    def test_flac16_output_format_writes_flac_files_at_pcm16(self, tmp_path, monkeypatch):
+        input_dir = tmp_path / "in"
+        input_dir.mkdir()
+        store_dir = tmp_path / "out"
+        track_path = input_dir / "track.wav"
+        _write_short_wav(track_path)
+
+        monkeypatch.setattr(inference_module, "demix_track", _fake_demix_track)
+
+        manifest = inference_module.run_folder(
+            _NoOpModel(),
+            argparse.Namespace(input_folder=input_dir, store_dir=store_dir),
+            _default_like_config(),
+            device="cpu",
+            verbose=True,
+            output_format="flac16",
+        )
+
+        assert [entry["output_path"] for entry in manifest] == [
+            str(store_dir / "track_vocals.flac"),
+            str(store_dir / "track_instrumental.flac"),
+        ]
+        for entry in manifest:
+            path = Path(entry["output_path"])
+            assert path.exists()
+            info = sf.info(path)
+            assert info.format == "FLAC"
+            assert info.subtype == "PCM_16"
+
+    def test_wav_s16_output_format_writes_wav_at_pcm16(self, tmp_path, monkeypatch):
+        input_dir = tmp_path / "in"
+        input_dir.mkdir()
+        store_dir = tmp_path / "out"
+        track_path = input_dir / "track.wav"
+        _write_short_wav(track_path)
+
+        monkeypatch.setattr(inference_module, "demix_track", _fake_demix_track)
+
+        manifest = inference_module.run_folder(
+            _NoOpModel(),
+            argparse.Namespace(input_folder=input_dir, store_dir=store_dir),
+            _default_like_config(),
+            device="cpu",
+            verbose=True,
+            output_format="wav_s16",
+        )
+
+        for entry in manifest:
+            path = Path(entry["output_path"])
+            info = sf.info(path)
+            assert info.format == "WAV"
+            assert info.subtype == "PCM_16"
+
+    def test_unsupported_output_format_raises(self, tmp_path, monkeypatch):
+        input_dir = tmp_path / "in"
+        input_dir.mkdir()
+        store_dir = tmp_path / "out"
+        track_path = input_dir / "track.wav"
+        _write_short_wav(track_path)
+
+        monkeypatch.setattr(inference_module, "demix_track", _fake_demix_track)
+
+        with pytest.raises(ValueError, match="unsupported output_format"):
+            inference_module.run_folder(
+                _NoOpModel(),
+                argparse.Namespace(input_folder=input_dir, store_dir=store_dir),
+                _default_like_config(),
+                device="cpu",
+                output_format="mp3_320",
+            )
+
 
 class TestSessionManifest:
     def test_session_infer_returns_run_folder_manifest(self, monkeypatch, tmp_path):
@@ -130,12 +202,13 @@ class TestSessionManifest:
         ]
         captured = {}
 
-        def fake_run_folder(model, args, config, device, verbose=False):
+        def fake_run_folder(model, args, config, device, verbose=False, output_format="wav_float32"):
             captured["model"] = model
             captured["args"] = args
             captured["config"] = config
             captured["device"] = device
             captured["verbose"] = verbose
+            captured["output_format"] = output_format
             return expected_manifest
 
         monkeypatch.setattr(inference_module, "run_folder", fake_run_folder)
@@ -154,3 +227,23 @@ class TestSessionManifest:
         assert captured["config"] == session._config
         assert captured["device"] == "cpu"
         assert captured["verbose"] is True
+        assert captured["output_format"] == "wav_float32"
+
+    def test_session_infer_forwards_explicit_output_format(self, monkeypatch, tmp_path):
+        captured = {}
+
+        def fake_run_folder(model, args, config, device, verbose=False, output_format="wav_float32"):
+            captured["output_format"] = output_format
+            return []
+
+        monkeypatch.setattr(inference_module, "run_folder", fake_run_folder)
+
+        session = MelBandRoformerSession(
+            model=_NoOpModel(),
+            config=_default_like_config(),
+            device="cpu",
+        )
+
+        session.infer(tmp_path / "in", store_dir=tmp_path / "out", output_format="flac16")
+
+        assert captured["output_format"] == "flac16"

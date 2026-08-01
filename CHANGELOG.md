@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.6] - 2026-08-01
+
+### Added
+- `run_folder()` (and the `MelBandRoformerSession.infer()` / `MelBandRoformerSeparator` /
+  `separate_folder()` facades above it) now accept an `output_format` keyword
+  (`"wav_float32"` (default, unchanged behavior) / `"wav_s16"` / `"flac16"`) that controls
+  the `sf.write` subtype and output file suffix for both the per-instrument stems and the
+  derived instrumental. `"flac16"` writes `.flac` files at `PCM_16` -- FLAC has no float
+  subtype, an expected format limitation, not a bug. The CLI (`proc_folder`) keeps its own
+  default of `wav_float32` unchanged; callers opt into FLAC explicitly.
+
 ## [0.1.5] - 2026-07-12
 
 Hotfix: added explicit `numba>=0.61.0`/`llvmlite>=0.44.0` floors. Without
