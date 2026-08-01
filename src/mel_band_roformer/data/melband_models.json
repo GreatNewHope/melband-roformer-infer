@@ -593,6 +593,102 @@
       "checkpoint": "mel_band_roformer_vocals_v2_gabox.ckpt",
       "config": "config_mel_band_roformer_vocals_gabox.yaml",
       "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta1": {
+      "name": "MelBand Roformer Big Beta 1 (pcunwa)",
+      "checkpoint": "melband_roformer_big_beta1.ckpt",
+      "config": "config_melbandroformer_big.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta2": {
+      "name": "MelBand Roformer Big Beta 2 (pcunwa)",
+      "checkpoint": "melband_roformer_big_beta2.ckpt",
+      "config": "config_melbandroformer_big.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta3": {
+      "name": "MelBand Roformer Big Beta 3 (pcunwa)",
+      "checkpoint": "melband_roformer_big_beta3.ckpt",
+      "config": "config_melbandroformer_big.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta4": {
+      "name": "MelBand Roformer Big Beta 4 (pcunwa)",
+      "checkpoint": "melband_roformer_big_beta4.ckpt",
+      "config": "config_melbandroformer_big_beta4.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta5e": {
+      "name": "MelBand Roformer Big Beta 5e (pcunwa)",
+      "checkpoint": "big_beta5e.ckpt",
+      "config": "big_beta5e.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta6": {
+      "name": "MelBand Roformer Big Beta 6 (pcunwa)",
+      "checkpoint": "big_beta6.ckpt",
+      "config": "big_beta6.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-big-beta6x": {
+      "name": "MelBand Roformer Big Beta 6x (pcunwa)",
+      "checkpoint": "big_beta6x.ckpt",
+      "config": "big_beta6x.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-small-v1": {
+      "name": "MelBand Roformer Small V1 (pcunwa)",
+      "checkpoint": "melband_roformer_small_v1.ckpt",
+      "config": "config_melbandroformer_small.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-melband-roformer-inst-v1": {
+      "name": "MelBand Roformer Instrumental V1 (pcunwa)",
+      "checkpoint": "melband_roformer_inst_v1.ckpt",
+      "config": "config_melbandroformer_inst.yaml",
+      "category": "instrumental"
+    },
+    "pcunwa-melband-roformer-inst-v1e": {
+      "name": "MelBand Roformer Instrumental V1e (pcunwa)",
+      "checkpoint": "inst_v1e.ckpt",
+      "config": "config_melbandroformer_inst.yaml",
+      "category": "instrumental"
+    },
+    "pcunwa-melband-roformer-inst-v1e-plus": {
+      "name": "MelBand Roformer Instrumental V1e Plus (pcunwa)",
+      "checkpoint": "inst_v1e_plus.ckpt",
+      "config": "config_melbandroformer_inst.yaml",
+      "category": "instrumental"
+    },
+    "pcunwa-melband-roformer-inst-v1-plus-test": {
+      "name": "MelBand Roformer Instrumental V1 Plus Test (pcunwa)",
+      "checkpoint": "inst_v1_plus_test.ckpt",
+      "config": "config_melbandroformer_inst.yaml",
+      "category": "instrumental"
+    },
+    "pcunwa-kimmel-ft": {
+      "name": "MelBand Roformer Kim FT (pcunwa)",
+      "checkpoint": "kimmel_unwa_ft.ckpt",
+      "config": "config_kimmel_unwa_ft.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-kimmel-ft2": {
+      "name": "MelBand Roformer Kim FT2 (pcunwa)",
+      "checkpoint": "kimmel_unwa_ft2.ckpt",
+      "config": "config_kimmel_unwa_ft.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-kimmel-ft2-bleedless": {
+      "name": "MelBand Roformer Kim FT2 Bleedless (pcunwa)",
+      "checkpoint": "kimmel_unwa_ft2_bleedless.ckpt",
+      "config": "config_kimmel_unwa_ft.yaml",
+      "category": "vocals"
+    },
+    "pcunwa-kimmel-ft3-prev": {
+      "name": "MelBand Roformer Kim FT3 Previous (pcunwa)",
+      "checkpoint": "kimmel_unwa_ft3_prev.ckpt",
+      "config": "config_kimmel_unwa_ft.yaml",
+      "category": "vocals"
     }
   }
 }

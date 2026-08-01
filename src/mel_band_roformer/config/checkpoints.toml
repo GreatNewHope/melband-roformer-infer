@@ -340,42 +340,42 @@ size = 1794
 [models.roformer-model-melband-roformer-kim-instvoc-duality-v1-by-unwa]
 model = "roformer-model-melband-roformer-kim-instvoc-duality-v1-by-unwa"
 license = "not-reviewed"
-provenance = "nomadkaraoke/python-audio-separator model-configs GitHub release; strict-load and short-forward probed 2026-07-23"
-source_revision = "2026-07-23"
-updated_at = "2026-07-23"
+provenance = "pcunwa/Mel-Band-Roformer-InstVoc-Duality Hugging Face repository"
+source_revision = "87d482fb6a1f9d10792fa598451bb16942cc1c92"
+updated_at = "2026-07-31"
 
 [[models.roformer-model-melband-roformer-kim-instvoc-duality-v1-by-unwa.artifacts]]
 kind = "checkpoint"
 name = "melband_roformer_instvoc_duality_v1.ckpt"
-url = "https://github.com/nomadkaraoke/python-audio-separator/releases/download/model-configs/melband_roformer_instvoc_duality_v1.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-InstVoc-Duality/resolve/87d482fb6a1f9d10792fa598451bb16942cc1c92/melband_roformer_instvoc_duality_v1.ckpt"
 sha256 = "4640a59d454bf9f69d67460592ab71e7cdce3afa0c0a6f0cf4500bb4ac0b8381"
 size = 1719116358
 
 [[models.roformer-model-melband-roformer-kim-instvoc-duality-v1-by-unwa.artifacts]]
 kind = "config"
 name = "config_melbandroformer_instvoc_duality.yaml"
-url = "https://github.com/nomadkaraoke/python-audio-separator/releases/download/model-configs/config_melbandroformer_instvoc_duality.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-InstVoc-Duality/resolve/87d482fb6a1f9d10792fa598451bb16942cc1c92/config_melbandroformer_instvoc_duality.yaml"
 sha256 = "62dbc3ecf29c7ac99df35003f8cb72da3348d646cb5e6d50e07323551c3d968f"
 size = 911
 
 [models.roformer-model-melband-roformer-kim-instvoc-duality-v2-by-unwa]
 model = "roformer-model-melband-roformer-kim-instvoc-duality-v2-by-unwa"
 license = "not-reviewed"
-provenance = "nomadkaraoke/python-audio-separator model-configs GitHub release; strict-load and short-forward probed 2026-07-23"
-source_revision = "2026-07-23"
-updated_at = "2026-07-23"
+provenance = "pcunwa/Mel-Band-Roformer-InstVoc-Duality Hugging Face repository"
+source_revision = "87d482fb6a1f9d10792fa598451bb16942cc1c92"
+updated_at = "2026-07-31"
 
 [[models.roformer-model-melband-roformer-kim-instvoc-duality-v2-by-unwa.artifacts]]
 kind = "checkpoint"
 name = "melband_roformer_instvox_duality_v2.ckpt"
-url = "https://github.com/nomadkaraoke/python-audio-separator/releases/download/model-configs/melband_roformer_instvox_duality_v2.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-InstVoc-Duality/resolve/87d482fb6a1f9d10792fa598451bb16942cc1c92/melband_roformer_instvox_duality_v2.ckpt"
 sha256 = "b4a69558708f2857e36ac86a0e03ed95c4e3d8b9c5b8113963987d0d7df7e20f"
 size = 1719116358
 
 [[models.roformer-model-melband-roformer-kim-instvoc-duality-v2-by-unwa.artifacts]]
 kind = "config"
 name = "config_melbandroformer_instvoc_duality.yaml"
-url = "https://github.com/nomadkaraoke/python-audio-separator/releases/download/model-configs/config_melbandroformer_instvoc_duality.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-InstVoc-Duality/resolve/87d482fb6a1f9d10792fa598451bb16942cc1c92/config_melbandroformer_instvoc_duality.yaml"
 sha256 = "62dbc3ecf29c7ac99df35003f8cb72da3348d646cb5e6d50e07323551c3d968f"
 size = 911
 
@@ -399,6 +399,342 @@ name = "config_dereverb_echo_mel_band_roformer_v2.yaml"
 url = "https://github.com/nomadkaraoke/python-audio-separator/releases/download/model-configs/config_dereverb_echo_mel_band_roformer_v2.yaml"
 sha256 = "b801c49dbc09372f85281127adde7ded28f475d98e9940efba4a2f45202b38f2"
 size = 1105
+
+[models.pcunwa-melband-roformer-big-beta1]
+model = "pcunwa-melband-roformer-big-beta1"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta1.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_big_beta1.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/melband_roformer_big_beta1.ckpt"
+sha256 = "59dfc7ecd486cb6276b00ab5618208fddda7d6bf5c1f0f6e3e769be9fa2801de"
+size = 1479745022
+
+[[models.pcunwa-melband-roformer-big-beta1.artifacts]]
+kind = "config"
+name = "config_melbandroformer_big.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/config_melbandroformer_big.yaml"
+sha256 = "2e62059b2cca71f6ef6f71a8202e979acc8008593c1fc75035663d1c750a4b7b"
+size = 907
+
+[models.pcunwa-melband-roformer-big-beta2]
+model = "pcunwa-melband-roformer-big-beta2"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta2.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_big_beta2.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/melband_roformer_big_beta2.ckpt"
+sha256 = "756d87988f98c6333395d3621b18855d82a0faefea1dcd0c168108c1964dcde3"
+size = 1479745022
+
+[[models.pcunwa-melband-roformer-big-beta2.artifacts]]
+kind = "config"
+name = "config_melbandroformer_big.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/config_melbandroformer_big.yaml"
+sha256 = "2e62059b2cca71f6ef6f71a8202e979acc8008593c1fc75035663d1c750a4b7b"
+size = 907
+
+[models.pcunwa-melband-roformer-big-beta3]
+model = "pcunwa-melband-roformer-big-beta3"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta3.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_big_beta3.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/melband_roformer_big_beta3.ckpt"
+sha256 = "e67ca768e2fe3ef61a83702dcafa861df8a70b17a30262c4c00195e632afcd6b"
+size = 1479738496
+
+[[models.pcunwa-melband-roformer-big-beta3.artifacts]]
+kind = "config"
+name = "config_melbandroformer_big.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/config_melbandroformer_big.yaml"
+sha256 = "2e62059b2cca71f6ef6f71a8202e979acc8008593c1fc75035663d1c750a4b7b"
+size = 907
+
+[models.pcunwa-melband-roformer-big-beta4]
+model = "pcunwa-melband-roformer-big-beta4"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta4.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_big_beta4.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/melband_roformer_big_beta4.ckpt"
+sha256 = "700a9bd3831d4f7f44cc0019b238774e31045bcbc361fbb69235535c40fc1454"
+size = 1574477088
+
+[[models.pcunwa-melband-roformer-big-beta4.artifacts]]
+kind = "config"
+name = "config_melbandroformer_big_beta4.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/config_melbandroformer_big_beta4.yaml"
+sha256 = "464f21925d2744be6af64cf9ee78d5937d11cfde0b91f819cb1f631acccab603"
+size = 908
+
+[models.pcunwa-melband-roformer-big-beta5e]
+model = "pcunwa-melband-roformer-big-beta5e"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta5e.artifacts]]
+kind = "checkpoint"
+name = "big_beta5e.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta5e.ckpt"
+sha256 = "32b876e1163716a9a007438b5a5107069586aa9b9ca653a5f63013b1edf6920c"
+size = 1479749810
+
+[[models.pcunwa-melband-roformer-big-beta5e.artifacts]]
+kind = "config"
+name = "big_beta5e.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta5e.yaml"
+sha256 = "2e62059b2cca71f6ef6f71a8202e979acc8008593c1fc75035663d1c750a4b7b"
+size = 907
+
+[models.pcunwa-melband-roformer-big-beta6]
+model = "pcunwa-melband-roformer-big-beta6"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta6.artifacts]]
+kind = "checkpoint"
+name = "big_beta6.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta6.ckpt"
+sha256 = "f51cbb94b4ed5c36cb36fd2024236a8af3ed6886567981702ad6f094b2c6c820"
+size = 1557078584
+
+[[models.pcunwa-melband-roformer-big-beta6.artifacts]]
+kind = "config"
+name = "big_beta6.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta6.yaml"
+sha256 = "14334637d4520bb4934df0815768a32845c9c1c5a1150429d1151e71864d6f24"
+size = 1722
+
+[models.pcunwa-melband-roformer-big-beta6x]
+model = "pcunwa-melband-roformer-big-beta6x"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-big Hugging Face repository"
+source_revision = "1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-big-beta6x.artifacts]]
+kind = "checkpoint"
+name = "big_beta6x.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta6x.ckpt"
+sha256 = "e16d702f4e20f13d60b293541c1dea75cb4414a5846b36780e28ef70352a4e5c"
+size = 1708527586
+
+[[models.pcunwa-melband-roformer-big-beta6x.artifacts]]
+kind = "config"
+name = "big_beta6x.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-big/resolve/1508d1ed7c54cb0017b2cbfaabdaf3ca87d2cf74/big_beta6x.yaml"
+sha256 = "42a037e9d80dc1dbc91005047cd20f4afe7c1267163fc878a9fbaf6be21959f3"
+size = 1724
+
+[models.pcunwa-melband-roformer-small-v1]
+model = "pcunwa-melband-roformer-small-v1"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-small Hugging Face repository"
+source_revision = "916ee9ef8140b05b85f8961a9e69c6a96ca41225"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-small-v1.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_small_v1.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-small/resolve/916ee9ef8140b05b85f8961a9e69c6a96ca41225/melband_roformer_small_v1.ckpt"
+sha256 = "9a1b9f3c32946b66781b82d5de856703d0fdf3359f047830c1373c0310dcb522"
+size = 202583890
+
+[[models.pcunwa-melband-roformer-small-v1.artifacts]]
+kind = "config"
+name = "config_melbandroformer_small.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-small/resolve/916ee9ef8140b05b85f8961a9e69c6a96ca41225/config_melbandroformer_small.yaml"
+sha256 = "74d6e1e582664f2619037c7328ad4ebe8e7312564798c21d0634acb01ca4a834"
+size = 933
+
+[models.pcunwa-melband-roformer-inst-v1]
+model = "pcunwa-melband-roformer-inst-v1"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-Inst Hugging Face repository"
+source_revision = "f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-inst-v1.artifacts]]
+kind = "checkpoint"
+name = "melband_roformer_inst_v1.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/melband_roformer_inst_v1.ckpt"
+sha256 = "6f88d96958b2b7dec32286b0ced00bbcbd37e28741cad9038758b1eaf9b5c057"
+size = 913100690
+
+[[models.pcunwa-melband-roformer-inst-v1.artifacts]]
+kind = "config"
+name = "config_melbandroformer_inst.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/config_melbandroformer_inst.yaml"
+sha256 = "64c0cf23730f299c9c73470e4ba4b32120d8fec4fb1a0326dde1d61378cc6fc8"
+size = 906
+
+[models.pcunwa-melband-roformer-inst-v1e]
+model = "pcunwa-melband-roformer-inst-v1e"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-Inst Hugging Face repository"
+source_revision = "f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-inst-v1e.artifacts]]
+kind = "checkpoint"
+name = "inst_v1e.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/inst_v1e.ckpt"
+sha256 = "df2bcdb8838b88264f5381dbb0ccd84a9926c9775cf548c34d8846f5cd20fe96"
+size = 913102724
+
+[[models.pcunwa-melband-roformer-inst-v1e.artifacts]]
+kind = "config"
+name = "config_melbandroformer_inst.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/config_melbandroformer_inst.yaml"
+sha256 = "64c0cf23730f299c9c73470e4ba4b32120d8fec4fb1a0326dde1d61378cc6fc8"
+size = 906
+
+[models.pcunwa-melband-roformer-inst-v1e-plus]
+model = "pcunwa-melband-roformer-inst-v1e-plus"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-Inst Hugging Face repository"
+source_revision = "f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-inst-v1e-plus.artifacts]]
+kind = "checkpoint"
+name = "inst_v1e_plus.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/inst_v1e_plus.ckpt"
+sha256 = "6a4ddba739f0352407fb6e18b29206b82318ec427fe37fcedb0f83241e4e15fb"
+size = 913090472
+
+[[models.pcunwa-melband-roformer-inst-v1e-plus.artifacts]]
+kind = "config"
+name = "config_melbandroformer_inst.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/config_melbandroformer_inst.yaml"
+sha256 = "64c0cf23730f299c9c73470e4ba4b32120d8fec4fb1a0326dde1d61378cc6fc8"
+size = 906
+
+[models.pcunwa-melband-roformer-inst-v1-plus-test]
+model = "pcunwa-melband-roformer-inst-v1-plus-test"
+license = "not-reviewed"
+provenance = "pcunwa/Mel-Band-Roformer-Inst Hugging Face repository"
+source_revision = "f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-melband-roformer-inst-v1-plus-test.artifacts]]
+kind = "checkpoint"
+name = "inst_v1_plus_test.ckpt"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/inst_v1_plus_test.ckpt"
+sha256 = "25fe6ab4db95a6c20468f6c082f9bfc30904b8727ed8d069110bd0960da4879a"
+size = 913090472
+
+[[models.pcunwa-melband-roformer-inst-v1-plus-test.artifacts]]
+kind = "config"
+name = "config_melbandroformer_inst.yaml"
+url = "https://huggingface.co/pcunwa/Mel-Band-Roformer-Inst/resolve/f86cd9e99d63eb9499b00fca424bc4ed8a8aeaba/config_melbandroformer_inst.yaml"
+sha256 = "64c0cf23730f299c9c73470e4ba4b32120d8fec4fb1a0326dde1d61378cc6fc8"
+size = 906
+
+[models.pcunwa-kimmel-ft]
+model = "pcunwa-kimmel-ft"
+license = "not-reviewed"
+provenance = "pcunwa/Kim-Mel-Band-Roformer-FT Hugging Face repository"
+source_revision = "e42d447e5026e85492945b73438b7a98b9314347"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-kimmel-ft.artifacts]]
+kind = "checkpoint"
+name = "kimmel_unwa_ft.ckpt"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/kimmel_unwa_ft.ckpt"
+sha256 = "e6bd8d333880191254a6ef6be3cb0ffa4dda9d3282e36b0cce2e88a660e00d39"
+size = 913100690
+
+[[models.pcunwa-kimmel-ft.artifacts]]
+kind = "config"
+name = "config_kimmel_unwa_ft.yaml"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/config_kimmel_unwa_ft.yaml"
+sha256 = "0942cb7da8e86ac1be840cc7b9647831c11ffe00327a0b239df256031e6c8355"
+size = 1722
+
+[models.pcunwa-kimmel-ft2]
+model = "pcunwa-kimmel-ft2"
+license = "not-reviewed"
+provenance = "pcunwa/Kim-Mel-Band-Roformer-FT Hugging Face repository"
+source_revision = "e42d447e5026e85492945b73438b7a98b9314347"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-kimmel-ft2.artifacts]]
+kind = "checkpoint"
+name = "kimmel_unwa_ft2.ckpt"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/kimmel_unwa_ft2.ckpt"
+sha256 = "5ed7b9e4c2eebbec7a7e5e8113058f7b68ba5e6048db8eaccfbbeb884c7884c0"
+size = 913100690
+
+[[models.pcunwa-kimmel-ft2.artifacts]]
+kind = "config"
+name = "config_kimmel_unwa_ft.yaml"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/config_kimmel_unwa_ft.yaml"
+sha256 = "0942cb7da8e86ac1be840cc7b9647831c11ffe00327a0b239df256031e6c8355"
+size = 1722
+
+[models.pcunwa-kimmel-ft2-bleedless]
+model = "pcunwa-kimmel-ft2-bleedless"
+license = "not-reviewed"
+provenance = "pcunwa/Kim-Mel-Band-Roformer-FT Hugging Face repository"
+source_revision = "e42d447e5026e85492945b73438b7a98b9314347"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-kimmel-ft2-bleedless.artifacts]]
+kind = "checkpoint"
+name = "kimmel_unwa_ft2_bleedless.ckpt"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/kimmel_unwa_ft2_bleedless.ckpt"
+sha256 = "3c450bd66a98b49dd03231fc5ebb84121eef8418236b179423c2b171d62b04d9"
+size = 913101368
+
+[[models.pcunwa-kimmel-ft2-bleedless.artifacts]]
+kind = "config"
+name = "config_kimmel_unwa_ft.yaml"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/config_kimmel_unwa_ft.yaml"
+sha256 = "0942cb7da8e86ac1be840cc7b9647831c11ffe00327a0b239df256031e6c8355"
+size = 1722
+
+[models.pcunwa-kimmel-ft3-prev]
+model = "pcunwa-kimmel-ft3-prev"
+license = "not-reviewed"
+provenance = "pcunwa/Kim-Mel-Band-Roformer-FT Hugging Face repository"
+source_revision = "e42d447e5026e85492945b73438b7a98b9314347"
+updated_at = "2026-07-31"
+
+[[models.pcunwa-kimmel-ft3-prev.artifacts]]
+kind = "checkpoint"
+name = "kimmel_unwa_ft3_prev.ckpt"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/kimmel_unwa_ft3_prev.ckpt"
+sha256 = "1b10db0095c42576a32aeb3a1c8054af9dea0333e1c38477091d78316a007e52"
+size = 913090472
+
+[[models.pcunwa-kimmel-ft3-prev.artifacts]]
+kind = "config"
+name = "config_kimmel_unwa_ft.yaml"
+url = "https://huggingface.co/pcunwa/Kim-Mel-Band-Roformer-FT/resolve/e42d447e5026e85492945b73438b7a98b9314347/config_kimmel_unwa_ft.yaml"
+sha256 = "0942cb7da8e86ac1be840cc7b9647831c11ffe00327a0b239df256031e6c8355"
+size = 1722
 
 [models.roformer-model-melband-roformer-de-reverb-super-big-by-sucial]
 model = "roformer-model-melband-roformer-de-reverb-super-big-by-sucial"

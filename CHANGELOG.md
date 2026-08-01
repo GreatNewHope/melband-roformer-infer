@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Added direct registry coverage for all 20 checkpoints in the `pcunwa`
+  Mel-Band Roformer family: Big Beta 1-7, Small, Instrumental V1 variants,
+  Kim FT variants, and InstVoc Duality V1/V2. Existing MelBand architecture
+  code handles these configuration variations; weights remain runtime
+  downloads with `not-reviewed` license metadata pending upstream clarification.
+
 All notable changes to this project are documented in this file.
 
 ## Unreleased

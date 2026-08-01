@@ -12,7 +12,7 @@ GUI dependency. Given an input folder of WAV files, it produces
 stems for non-vocal models). See README.md for the public API, CLI, and
 full model registry.
 
-**In scope**: inference (forward pass) only; a 99-model registry
+**In scope**: inference (forward pass) only; a 115-entry registry
 (`src/mel_band_roformer/data/melband_models.json`, bulk-imported from
 python-audio-separator's `models.json` "roformer" list) spanning vocals,
 instrumental, karaoke, denoise, dereverb, crowd, general, and aspiration
@@ -112,7 +112,7 @@ Bundle").
   to lists), `load_checkpoint_state` (thin `torch.load` wrapper both backends
   and the CLI share).
 - `src/mel_band_roformer/data/melband_models.json` -- the model registry
-  data (99 entries).
+  data (115 entries).
 - `src/mel_band_roformer/data/overrides.json` -- the live patch point for
   dead URLs: when a host 404s, edit this file first, before touching
   `download.py`.
@@ -124,7 +124,7 @@ Bundle").
 
 ## Weights hosting (org constitution article 4)
 
-All 99 registry models download from third-party hosts at runtime; none are
+All 115 registry models download from third-party hosts at runtime; none are
 committed to this repo. This registry was bulk-imported from
 python-audio-separator's `models.json`, which shares checkpoint/config
 filenames but not necessarily a live download URL for each entry -- a
@@ -158,6 +158,11 @@ The inference output contract now
 uses the config-declared stems for multi-output models and derives a residual
 only for single-target models.
 
+The 2026-07-31 pcunwa inventory adds direct metadata for all 20 Mel-Band
+checkpoints: Big Beta 1-7, Small V1, Instrumental V1/V1e/V1e Plus/V1 Plus Test,
+Kim FT/FT2/FT2 Bleedless/FT3 Previous, and InstVoc Duality V1/V2. All share the
+existing `MelBandRoformer` implementation; the variation is configuration-only.
+
 `data/overrides.json` is the single patch point for a future re-host; it
 does not require a code change. See README's "What This Project Will NEVER
 Bundle" for the user-facing contract (auto-download, manual path, sha256
@@ -182,6 +187,10 @@ Development below). Test files:
   access. Run explicitly before a release: `pytest -m network
   tests/test_weights_liveness.py -v`, or `python
   tools/check_weights_liveness.py` directly.
+- `tests/test_pcunwa_coverage.py` -- locks the 20-checkpoint pcunwa Mel-Band
+  inventory and its direct revision-pinned artifact metadata.
+- `tools/probe_pcunwa_models.py` -- downloads, strict-loads, and optionally runs
+  a short forward pass for the pcunwa inventory.
 - `tests/test_twin_backports.py` -- regressions ported from bs-roformer-infer
   (this project's fork sibling) that had drifted out of sync; see
   CHANGELOG.md's `[0.1.3]` entry.
