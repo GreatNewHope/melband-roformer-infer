@@ -89,7 +89,7 @@ def demix_track(config, model, mix, device, first_chunk_time=None):
 
     windowing_array = get_windowing_array(C, fade_size, device)
 
-    with torch.cuda.amp.autocast():
+    with torch.amp.autocast('cuda'):
         with torch.no_grad():
             if config.training.target_instrument is not None:
                 req_shape = (1, ) + tuple(mix.shape)
